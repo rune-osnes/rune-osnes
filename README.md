@@ -2,6 +2,7 @@
 <img src="https://user-images.githubusercontent.com/12958670/218051332-5c1debb4-22de-44a4-a1d1-2ce46c9ac9b7.png" alt="Imenco logo">
 </p>
 
+
 ### :scroll: About me:
 > I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas.
 
@@ -15,8 +16,10 @@
 <img src="https://img.icons8.com/color/48/null/3d-select--v1.png"/>
 </p>
 
+
 ### :fire: Statistics:
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
+
 
 <p align="center">
 <img alt="Atom" src="https://img.shields.io/badge/Atom-%2366595C.svg?style=for-the-badge&logo=atom&logoColor=white"/>
