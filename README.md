@@ -2,9 +2,9 @@
 <img src="https://user-images.githubusercontent.com/12958670/218051332-5c1debb4-22de-44a4-a1d1-2ce46c9ac9b7.png" alt="Imenco logo">
 </p>
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy-downsized-large.gif"/>
-</p>
+</p> -->
 
 <!-- <p align="center">
 <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="250px">
