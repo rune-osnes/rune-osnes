@@ -6,3 +6,6 @@
 
 
 I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
+
+### TOOLS:
+https://img.shields.io/badge/Visual_Studio-5C2D91?style=for-the-badge&logo=visual%20studio&logoColor=white
