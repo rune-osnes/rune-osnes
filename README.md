@@ -13,8 +13,11 @@
 <img alt="Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
 </p>
 
+
 <p align="center">
+
 ### :fire: Statistics:
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
 <!-- [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=dark&background=000000)](https://git.io/streak-stats) -->
+
 </p>
