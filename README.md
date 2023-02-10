@@ -10,6 +10,7 @@
 <img src="https://media.giphy.com/media/BUbMgQBShZOcMPohgn/giphy-downsized-large.gif" width="30px">
 <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="30px">
 
+### :scroll: About me:
 I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
 
 
@@ -22,6 +23,6 @@ I'm a former CNC operator with an interest in programming, woodworking, electron
 </p>
 
 
-### :fire: Statistics :
+### :fire: Statistics:
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
 <!-- [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=dark&background=000000)](https://git.io/streak-stats) -->
