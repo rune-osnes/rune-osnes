@@ -14,7 +14,5 @@
 </p>
 
 ### :fire: Statistics:
-
-<p align="center">
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
-</p>
+
