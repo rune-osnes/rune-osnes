@@ -1,12 +1,10 @@
 <p align="center">
-
 <img src="https://user-images.githubusercontent.com/12958670/218051332-5c1debb4-22de-44a4-a1d1-2ce46c9ac9b7.png" alt="Imenco logo">
-
 </p>
 
-<div id="header" align="center">
+<p align="center">
   <img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy-downsized-large.gif" width="100"/>
-</div>
+</p>
 
 
 I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
