@@ -23,3 +23,5 @@ I'm a former CNC operator with an interest in programming, woodworking, electron
 
 ### :fire: Statistics :
 [![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=dark&background=000000)](https://git.io/streak-stats)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=prussian)](https://git.io/streak-stats)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
