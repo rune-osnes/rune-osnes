@@ -4,7 +4,9 @@
 
 </p>
 
-
+<div id="header" align="center">
+  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+</div>
 
 
 I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
@@ -14,7 +16,8 @@ I'm a former CNC operator with an interest in programming, woodworking, electron
 <img alt="Atom" src="https://img.shields.io/badge/Atom-%2366595C.svg?style=for-the-badge&logo=atom&logoColor=white"/>
 <img alt="Notepad++" src="https://img.shields.io/badge/Notepad++-90E59A.svg?style=for-the-badge&logo=notepad%2b%2b&logoColor=black"/>
 <img alt="PyCharm" src="https://img.shields.io/badge/pycharm-143?style=for-the-badge&logo=pycharm&logoColor=black&color=black&labelColor=green"/>
-<img alt="Sublime Text" src="(https://img.shields.io/badge/sublime_text-%23575757.svg?style=for-the-badge&logo=sublime-text&logoColor=important"/>
+<img alt="Sublime Text" src="https://img.shields.io/badge/sublime_text-%23575757.svg?style=for-the-badge&logo=sublime-text&logoColor=important"/>
 <img alt="Visual Studio Code" src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white"/>
 </p>
+
 
