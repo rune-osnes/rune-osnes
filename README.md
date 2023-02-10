@@ -6,12 +6,14 @@
   <img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy-downsized-large.gif"/>
 </p>
 
-<img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy-downsized-large.gif" width="30px">
-<img src="https://media.giphy.com/media/BUbMgQBShZOcMPohgn/giphy-downsized-large.gif" width="30px">
-<img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="30px">
+<p align="center">
+<img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy-downsized-large.gif" width="300px">
+<img src="https://media.giphy.com/media/BUbMgQBShZOcMPohgn/giphy-downsized-large.gif" width="300px">
+<img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" width="300px">
+</p>
 
 ### :scroll: About me:
-I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
+> I'm a former CNC operator with an interest in programming, woodworking, electronics, metal work, photography, graphics, 3D modeling and a lot of other areas. :-)
 
 
 <p align="center">
