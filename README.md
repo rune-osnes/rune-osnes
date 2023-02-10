@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://user-images.githubusercontent.com/12958670/218050539-ebb7044a-cf7b-4bc7-bf09-76a12b65b9db.png" alt="Imenco logo">
+<img src="https://user-images.githubusercontent.com/12958670/218051332-5c1debb4-22de-44a4-a1d1-2ce46c9ac9b7.png" alt="Imenco logo">
 </p>
 
 
