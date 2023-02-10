@@ -5,7 +5,7 @@
 </p>
 
 <div id="header" align="center">
-  <img src="https://media.giphy.com/media/M9gbBd9nbDrOTu1Mqx/giphy.gif" width="100"/>
+  <img src="https://media.giphy.com/media/7FrOU9tPbgAZtxV5mb/giphy.gif" width="100"/>
 </div>
 
 
@@ -21,3 +21,5 @@ I'm a former CNC operator with an interest in programming, woodworking, electron
 </p>
 
 
+### :fire: Statistics :
+[![GitHub Streak](http://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=dark&background=000000)](https://git.io/streak-stats)
