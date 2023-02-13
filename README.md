@@ -16,9 +16,9 @@
 <img src="https://img.icons8.com/color/48/null/3d-select--v1.png"/>
 </p>
 
-
+<!-- 
 ### :fire: Statistics:
-[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
+[![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats) -->
 
 
 <p align="center">
@@ -31,4 +31,4 @@
 
 <img src="Icons/blender.svg"/>
 
-[Relative link to Icons folder](<img src="Icons/blender.svg"/>)
+<!-- [Relative link to Icons folder](<img src="Icons/blender.svg"/>) -->
