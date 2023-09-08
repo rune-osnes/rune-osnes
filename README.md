@@ -17,11 +17,11 @@
 </p>
 
 
-<div align="center">
+<!--<div align="center">
 
 [![GitHub Streak](https://github-readme-streak-stats.herokuapp.com?user=rune-osnes&theme=black-ice)](https://git.io/streak-stats)
 
-</div>
+</div>-->
 
 
 <p align="center">
