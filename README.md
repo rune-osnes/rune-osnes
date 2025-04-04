@@ -35,3 +35,6 @@
 <!-- <img src="Icons/blender.svg"/> -->
 
 <!-- [Relative link to Icons folder](<img src="Icons/blender.svg"/>) -->
+
+
+[![GitHub Streak](https://streak-stats.demolab.com/?user=runeosnes)](https://git.io/streak-stats)
