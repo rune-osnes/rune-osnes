@@ -36,5 +36,6 @@
 
 <!-- [Relative link to Icons folder](<img src="Icons/blender.svg"/>) -->
 
-
+<p align="center">
 [![GitHub Streak](https://streak-stats.demolab.com?user=rune-osnes&theme=dark&exclude_days=Sun%2CSat)](https://git.io/streak-stats)
+</p>
