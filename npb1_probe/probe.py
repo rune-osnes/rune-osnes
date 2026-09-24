@@ -119,7 +119,13 @@ app=FastAPI()
 async def startup():
     global RESULT
     RESULT=await run_probe()
-    print("NPB1_REMOTE_MCP_PROBE="+json.dumps(RESULT,sort_keys=True),flush=True)
+    import base64
+    for rid, rec in sorted((RESULT.get("changed_records") or {}).items()):
+        payload=json.dumps(rec,ensure_ascii=False,sort_keys=True).encode("utf-8")
+        print("NPB1_CHANGED|"+rid+"|"+base64.b64encode(payload).decode("ascii"),flush=True)
+    compact=dict(RESULT)
+    compact.pop("changed_records",None)
+    print("NPB1_REMOTE_MCP_PROBE="+json.dumps(compact,sort_keys=True),flush=True)
 
 @app.get("/health")
 def health():
