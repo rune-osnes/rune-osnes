@@ -14,6 +14,7 @@ from mcp.client.streamable_http import streamable_http_client
 URL = os.environ["MCP_URL"].rstrip("/")
 TOKEN = os.environ["MCP_TOKEN"]
 PORT = int(os.environ.get("PORT", "10000"))
+MODE = os.environ.get("GATE_MODE", "normal")
 EXPECTED_TOOLS = {"get_authority_status", "get_recovery_state", "get_state_record"}
 EXPECTED_FP = "23d883309c241cd5743a4918670a7ebcc6dcac797210848f4fdcc61149e8cab4"
 EXPECTED_REG_REV = "96528ecbf19cf4b3d76aed82c37e4cd6f1241db684060759200f530b687cf11c"
@@ -39,6 +40,37 @@ def unwrap(call_result):
             except Exception:
                 pass
     raise RuntimeError("tool result was not structured JSON")
+
+
+async def run_outage_gate():
+    out: dict[str, object] = {"endpoint": URL, "mode": "outage", "checks": {}}
+    async with httpx2.AsyncClient(
+        headers={"Authorization": f"Bearer {TOKEN}"}
+    ) as mcp_http:
+        async with streamable_http_client(
+            URL, http_client=mcp_http
+        ) as (read_stream, write_stream):
+            async with ClientSession(read_stream, write_stream) as session:
+                await session.initialize()
+                tools = await session.list_tools()
+                names = {tool.name for tool in tools.tools}
+                out["checks"]["exact_three_tools"] = names == EXPECTED_TOOLS
+                failed_closed = False
+                try:
+                    response = await session.call_tool("get_authority_status", {})
+                    failed_closed = bool(
+                        getattr(
+                            response,
+                            "isError",
+                            getattr(response, "is_error", False),
+                        )
+                    )
+                except Exception:
+                    failed_closed = True
+                out["checks"]["authority_fails_closed"] = failed_closed
+    out["verified"] = all(out["checks"].values())
+    out["status"] = "pass" if out["verified"] else "fail"
+    return out
 
 
 async def run_gate():
@@ -167,7 +199,7 @@ async def run_gate():
 def worker():
     global result
     try:
-        result = asyncio.run(run_gate())
+        result = asyncio.run(run_outage_gate() if MODE == "outage" else run_gate())
     except Exception as exc:
         result={"status":"error","verified":False,"error_type":type(exc).__name__,"error":str(exc)[:1000]}
     print("NPB1_REMOTE_MCP_GATE="+json.dumps(result,sort_keys=True),flush=True)
