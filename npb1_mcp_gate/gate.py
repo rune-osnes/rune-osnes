@@ -48,62 +48,116 @@ async def run_gate():
         unauth = await client.post(
             URL,
             headers={"Accept": "application/json, text/event-stream"},
-            json={"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2026-07-28","capabilities":{},"clientInfo":{"name":"npb1-unauthorized-probe","version":"1"}}},
+            json={
+                "jsonrpc": "2.0",
+                "id": 1,
+                "method": "initialize",
+                "params": {
+                    "protocolVersion": "2026-07-28",
+                    "capabilities": {},
+                    "clientInfo": {"name": "npb1-unauthorized-probe", "version": "1"},
+                },
+            },
         )
-        out["checks"]["unauthorized_rejected"] = unauth.status_code in (401,403)
+        out["checks"]["unauthorized_rejected"] = unauth.status_code in (401, 403)
         out["unauthorized_status"] = unauth.status_code
 
-    async with httpx2.AsyncClient(headers={"Authorization": f"Bearer {TOKEN}"}) as mcp_http:
-        async with streamable_http_client(URL, http_client=mcp_http) as (read_stream, write_stream):
+    async with httpx2.AsyncClient(
+        headers={"Authorization": f"Bearer {TOKEN}"}
+    ) as mcp_http:
+        async with streamable_http_client(
+            URL, http_client=mcp_http
+        ) as (read_stream, write_stream):
             async with ClientSession(read_stream, write_stream) as session:
-            init = await session.initialize()
-            out["protocol_version"] = str(getattr(init, "protocolVersion", getattr(init, "protocol_version", "")))
-            tools = await session.list_tools()
-            names = {tool.name for tool in tools.tools}
-            out["tool_names"] = sorted(names)
-            out["checks"]["exact_three_tools"] = names == EXPECTED_TOOLS
+                init = await session.initialize()
+                out["protocol_version"] = str(
+                    getattr(init, "protocolVersion", getattr(init, "protocol_version", ""))
+                )
 
-            authority = unwrap(await session.call_tool("get_authority_status", {}))
-            out["authority"] = authority
-            reg=authority["authority_registry"]
-            state=authority["state_store"]
-            out["checks"]["authority_live"] = (
-                state["fingerprint"] == EXPECTED_FP
-                and reg["generation"] == 2
-                and reg["revision"] == EXPECTED_REG_REV
-                and reg["current_authority_mode"] == "typed_state_store"
-                and reg["activation_status"] == "ACTIVE_VERIFIED"
-                and authority["consistency"]["validated"] is True
-            )
+                tools = await session.list_tools()
+                names = {tool.name for tool in tools.tools}
+                out["tool_names"] = sorted(names)
+                out["checks"]["exact_three_tools"] = names == EXPECTED_TOOLS
 
-            recovery = unwrap(await session.call_tool("get_recovery_state", {}))
-            out["recovery"] = recovery
-            out["checks"]["recovery_direct"] = (
-                recovery.get("evidence_basis") == "direct_authenticated_state_store"
-                and recovery["authority"]["generation"] == 2
-                and recovery["authority"]["fingerprint"] == EXPECTED_FP
-                and recovery["framework"]["released_control_version"] == "0.5.10"
-            )
+                authority = unwrap(
+                    await session.call_tool("get_authority_status", {})
+                )
+                out["authority"] = authority
+                reg = authority["authority_registry"]
+                state = authority["state_store"]
+                out["checks"]["authority_live"] = (
+                    state["fingerprint"] == EXPECTED_FP
+                    and reg["generation"] == 2
+                    and reg["revision"] == EXPECTED_REG_REV
+                    and reg["current_authority_mode"] == "typed_state_store"
+                    and reg["activation_status"] == "ACTIVE_VERIFIED"
+                    and authority["consistency"]["validated"] is True
+                )
 
-            rec = unwrap(await session.call_tool("get_state_record", {"record_id":"project.state/016-npb1-minimum-production-scope-2026-09-24"}))
-            out["allowed_record"] = {"record_id":rec.get("record_id"),"revision":rec.get("revision"),"title":rec.get("title")}
-            out["checks"]["allowed_exact_record"] = rec.get("record_id") == "project.state/016-npb1-minimum-production-scope-2026-09-24"
+                recovery = unwrap(
+                    await session.call_tool("get_recovery_state", {})
+                )
+                out["recovery"] = recovery
+                out["checks"]["recovery_direct"] = (
+                    recovery.get("evidence_basis")
+                    == "direct_authenticated_state_store"
+                    and recovery["authority"]["generation"] == 2
+                    and recovery["authority"]["fingerprint"] == EXPECTED_FP
+                    and recovery["framework"]["released_control_version"] == "0.5.10"
+                )
 
-            unknown_failed=False
-            try:
-                unknown=await session.call_tool("get_state_record", {"record_id":"project.state/does-not-exist"})
-                unknown_failed=bool(getattr(unknown,"isError",getattr(unknown,"is_error",False)))
-            except Exception:
-                unknown_failed=True
-            out["checks"]["unknown_fails_closed"]=unknown_failed
+                rec = unwrap(
+                    await session.call_tool(
+                        "get_state_record",
+                        {
+                            "record_id":
+                            "project.state/016-npb1-minimum-production-scope-2026-09-24"
+                        },
+                    )
+                )
+                out["allowed_record"] = {
+                    "record_id": rec.get("record_id"),
+                    "revision": rec.get("revision"),
+                    "title": rec.get("title"),
+                }
+                out["checks"]["allowed_exact_record"] = (
+                    rec.get("record_id")
+                    == "project.state/016-npb1-minimum-production-scope-2026-09-24"
+                )
 
-            disallowed_failed=False
-            try:
-                disallowed=await session.call_tool("get_state_record", {"record_id":"project.secret/example"})
-                disallowed_failed=bool(getattr(disallowed,"isError",getattr(disallowed,"is_error",False)))
-            except Exception:
-                disallowed_failed=True
-            out["checks"]["disallowed_fails_closed"]=disallowed_failed
+                unknown_failed = False
+                try:
+                    unknown = await session.call_tool(
+                        "get_state_record",
+                        {"record_id": "project.state/does-not-exist"},
+                    )
+                    unknown_failed = bool(
+                        getattr(
+                            unknown,
+                            "isError",
+                            getattr(unknown, "is_error", False),
+                        )
+                    )
+                except Exception:
+                    unknown_failed = True
+                out["checks"]["unknown_fails_closed"] = unknown_failed
+
+                disallowed_failed = False
+                try:
+                    disallowed = await session.call_tool(
+                        "get_state_record",
+                        {"record_id": "project.secret/example"},
+                    )
+                    disallowed_failed = bool(
+                        getattr(
+                            disallowed,
+                            "isError",
+                            getattr(disallowed, "is_error", False),
+                        )
+                    )
+                except Exception:
+                    disallowed_failed = True
+                out["checks"]["disallowed_fails_closed"] = disallowed_failed
 
     out["verified"] = all(out["checks"].values())
     out["status"] = "pass" if out["verified"] else "fail"
