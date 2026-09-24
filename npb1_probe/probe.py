@@ -67,6 +67,24 @@ async def run_probe():
             }
             out["checks"]["allowed_exact_record"]=sr.get("record_id")==ALLOWED_RECORD
 
+            changed_ids=[
+                "project.state/001-current-phase",
+                "project.state/002-current-status",
+                "project.state/012-exact-next-action",
+                "project.state/016-npb1-minimum-production-scope-2026-09-24",
+                "project.decisions/dec-026-freeze-npb1-minimum-production-baseline",
+                "project.evidence/049-r-2026-09-24-49-npb1-scope-freeze",
+                "project.governance/013-project-instructions-compatibility",
+                "project.governance/023-access-boundary",
+            ]
+            out["changed_records"]={}
+            for rid in changed_ids:
+                rr=_content(await c.call_tool("get_state_record",{"record_id":rid}))
+                out["changed_records"][rid]={
+                    "record_id":rr.get("record_id"),"title":rr.get("title"),
+                    "content":rr.get("content"),"revision":rr.get("revision")
+                }
+
             try:
                 await c.call_tool("get_state_record",{"record_id":"project.state/does-not-exist"})
                 out["checks"]["unknown_record_rejected"]=False
