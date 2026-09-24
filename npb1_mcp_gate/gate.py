@@ -7,6 +7,7 @@ import threading
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 import httpx
+import httpx2
 from mcp import ClientSession
 from mcp.client.streamable_http import streamable_http_client
 
@@ -52,9 +53,9 @@ async def run_gate():
         out["checks"]["unauthorized_rejected"] = unauth.status_code in (401,403)
         out["unauthorized_status"] = unauth.status_code
 
-    headers={"Authorization": f"Bearer {TOKEN}"}
-    async with streamable_http_client(URL, headers=headers) as (read_stream, write_stream, _get_session_id):
-        async with ClientSession(read_stream, write_stream) as session:
+    async with httpx2.AsyncClient(headers={"Authorization": f"Bearer {TOKEN}"}) as mcp_http:
+        async with streamable_http_client(URL, http_client=mcp_http) as (read_stream, write_stream):
+            async with ClientSession(read_stream, write_stream) as session:
             init = await session.initialize()
             out["protocol_version"] = str(getattr(init, "protocolVersion", getattr(init, "protocol_version", "")))
             tools = await session.list_tools()
